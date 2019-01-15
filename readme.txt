@@ -1,3 +1,5 @@
+http+json接口实现脚本：entryTask.py和serverApplication.py
+
 postman功能测试用例集：entrytask.postman_collection.json
 
 使用newman跑自动化脚本的命令：newman run entrytask.postman_collection.json --reporters json --reporter-json-export entryTaskReport.json 
