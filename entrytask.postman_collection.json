@@ -1,0 +1,709 @@
+{
+	"info": {
+		"_postman_id": "680a876d-9f6e-4fe2-a9bd-066eafb8df97",
+		"name": "entrytask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "正常访问_所有参数正确",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e355811-c0cc-4cba-8064-7a44b33b9cd5",
+						"exec": [
+							"pm.test(\"错误码是否为0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"success\");",
+							"});",
+							"",
+							"pm.test(\"refenence是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.refenence).to.eql(\"No.01 is Amy\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "正常访问_b的值含特殊字符",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbb0b77e-a273-4bb1-bbf9-95dd127fc287",
+						"exec": [
+							"pm.test(\"错误码是否为0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"success\");",
+							"});",
+							"",
+							"pm.test(\"refenence是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.refenence).to.eql(\"No.9999 is 0a~!@#$%^&*()_+ -={}[]\\\\|:\\\";'<>,.'\\\"/?\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=9999&b=\"0a~!@%23$%25^%26*()_%2B%20-%3D{}[]%5C|:\"%3B'<>,.'\"%2F%3F\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "9999"
+						},
+						{
+							"key": "b",
+							"value": "\"0a~!@%23$%25^%26*()_%2B%20-%3D{}[]%5C|:\"%3B'<>,.'\"%2F%3F\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "系统错误_异常提交方式",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f93a65fa-105b-42db-bb9d-7b165fffb839",
+						"exec": [
+							"pm.test(\"错误码是否为11\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(11);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"system error\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_多参数",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "703aee7e-5b48-4c22-8483-56b649c2a4b3",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01&b=\"Amy\"&c=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						},
+						{
+							"key": "c",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_缺少参数a",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3e0bb5c-5db8-45cf-ac7e-b954cebe3731",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?c=123&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "c",
+							"value": "123"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_缺少参数b",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3e0bb5c-5db8-45cf-ac7e-b954cebe3731",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_a的值为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d08a5f24-251c-4dcc-8cd4-b2f41d97bdc4",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": ""
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_b的值为\b空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1225a9ad-79f1-46b8-ba42-54feb6566622",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01&b=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						},
+						{
+							"key": "b",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_a的值含字母",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3aae7b7-4a08-4318-bbdd-61339061717f",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01abc&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01abc"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_a的值含负号",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9ff8496-3227-43bd-9570-c6846cf0af37",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=-01&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "-01"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_a的值含小数点",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08454b26-3fac-4953-8377-6e5971e59f05",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=0.1&b=\"Amy\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "0.1"
+						},
+						{
+							"key": "b",
+							"value": "\"Amy\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_b的值没有用双引号括起来",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "127a0598-0d32-4e49-b80c-910a7c12208c",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01&b=Amy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						},
+						{
+							"key": "b",
+							"value": "Amy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "参数错误_b的值用的是\b单引号括起来",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66d0a814-a925-4200-a5f8-d3948b4007e6",
+						"exec": [
+							"pm.test(\"错误码是否为21\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_code).to.eql(21);",
+							"});",
+							"",
+							"pm.test(\"msg是否正确\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/?a=01&b=‘Amy’",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "01"
+						},
+						{
+							"key": "b",
+							"value": "‘Amy’"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

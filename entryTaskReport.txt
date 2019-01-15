@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="entrytask" tests="13" time="0.080">
+  <testsuite name="正常访问_所有参数正确" id="7124852e-4d27-46e8-bf7e-d70d0d4b048f" timestamp="2019-01-15T02:35:10.586Z" classname="正常访问_所有参数正确" tests="3" failures="0" errors="0" time="0.039">
+    <testcase name="错误码是否为0" time="0.039"/>
+    <testcase name="msg是否正确" time="0.039"/>
+    <testcase name="refenence是否正确" time="0.039"/>
+  </testsuite>
+  <testsuite name="正常访问_b的值含特殊字符" id="c26e8f19-f87d-459a-8ead-d176d1ae0411" timestamp="2019-01-15T02:35:10.586Z" classname="正常访问_b的值含特殊字符" tests="3" failures="0" errors="0" time="0.005">
+    <testcase name="错误码是否为0" time="0.005"/>
+    <testcase name="msg是否正确" time="0.005"/>
+    <testcase name="refenence是否正确" time="0.005"/>
+  </testsuite>
+  <testsuite name="系统错误_异常提交方式" id="af92982a-b608-4766-b844-35730b54a1f3" timestamp="2019-01-15T02:35:10.586Z" classname="系统错误_异常提交方式" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="错误码是否为11" time="0.004"/>
+    <testcase name="msg是否正确" time="0.004"/>
+  </testsuite>
+  <testsuite name="参数错误_多参数" id="5f7fbca8-09e1-412b-a448-0faa82818e6c" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_多参数" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="错误码是否为21" time="0.004"/>
+    <testcase name="msg是否正确" time="0.004"/>
+  </testsuite>
+  <testsuite name="参数错误_缺少参数a" id="858e4842-5698-42e0-8d7c-308a65388b02" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_缺少参数a" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="错误码是否为21" time="0.003"/>
+    <testcase name="msg是否正确" time="0.003"/>
+  </testsuite>
+  <testsuite name="参数错误_缺少参数b" id="07c69a97-e0b3-426f-b95e-c511a433a5d3" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_缺少参数b" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="错误码是否为21" time="0.003"/>
+    <testcase name="msg是否正确" time="0.003"/>
+  </testsuite>
+  <testsuite name="参数错误_a的值为空" id="a3db700c-f72d-4810-86bd-6a3bbffc1bbd" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_a的值为空" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="错误码是否为21" time="0.003"/>
+    <testcase name="msg是否正确" time="0.003"/>
+  </testsuite>
+  <testsuite name="参数错误_b的值为空" id="23b250c6-13b6-4ba9-a03a-e478b3da0716" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_b的值为空" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="错误码是否为21" time="0.004"/>
+    <testcase name="msg是否正确" time="0.004"/>
+  </testsuite>
+  <testsuite name="参数错误_a的值含字母" id="d96e4127-0b1f-414a-9d4d-3af2b6e4a5c9" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_a的值含字母" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="错误码是否为21" time="0.003"/>
+    <testcase name="msg是否正确" time="0.003"/>
+  </testsuite>
+  <testsuite name="参数错误_a的值含负号" id="c2334b7c-f65a-4218-9421-ad02e5ec730d" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_a的值含负号" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="错误码是否为21" time="0.003"/>
+    <testcase name="msg是否正确" time="0.003"/>
+  </testsuite>
+  <testsuite name="参数错误_a的值含小数点" id="a8d567cb-eee4-4a22-bed2-93abc191bea3" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_a的值含小数点" tests="2" failures="0" errors="0" time="0.002">
+    <testcase name="错误码是否为21" time="0.002"/>
+    <testcase name="msg是否正确" time="0.002"/>
+  </testsuite>
+  <testsuite name="参数错误_b的值没有用双引号括起来" id="7bb48001-bd30-4fee-a797-c224cc83f0aa" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_b的值没有用双引号括起来" tests="2" failures="0" errors="0" time="0.003">
+    <testcase name="错误码是否为21" time="0.003"/>
+    <testcase name="msg是否正确" time="0.003"/>
+  </testsuite>
+  <testsuite name="参数错误_b的值用的是单引号括起来" id="ae46a8eb-fe17-4179-b153-195e80baa180" timestamp="2019-01-15T02:35:10.586Z" classname="参数错误_b的值用的是单引号括起来" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="错误码是否为21" time="0.004"/>
+    <testcase name="msg是否正确" time="0.004"/>
+  </testsuite>
+</testsuites>

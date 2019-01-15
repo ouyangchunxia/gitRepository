@@ -1,0 +1,3534 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "680a876d-9f6e-4fe2-a9bd-066eafb8df97"
+    },
+    "item": [
+      {
+        "id": "7124852e-4d27-46e8-bf7e-d70d0d4b048f",
+        "name": "正常访问_所有参数正确",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "4e355811-c0cc-4cba-8064-7a44b33b9cd5",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为0\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(0);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"success\");",
+                "});",
+                "",
+                "pm.test(\"refenence是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.refenence).to.eql(\"No.01 is Amy\");",
+                "});"
+              ],
+              "_lastExecutionId": "e09cd55d-43a0-4b1a-a4e8-db62d3d7bb78"
+            }
+          }
+        ]
+      },
+      {
+        "id": "c26e8f19-f87d-459a-8ead-d176d1ae0411",
+        "name": "正常访问_b的值含特殊字符",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "9999"
+              },
+              {
+                "key": "b",
+                "value": "\"0a~!@%23$%25^%26*()_%2B%20-%3D{}[]%5C|:\"%3B'<>,.'\"%2F%3F\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "bbb0b77e-a273-4bb1-bbf9-95dd127fc287",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为0\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(0);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"success\");",
+                "});",
+                "",
+                "pm.test(\"refenence是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.refenence).to.eql(\"No.9999 is 0a~!@#$%^&*()_+ -={}[]\\\\|:\\\";'<>,.'\\\"/?\");",
+                "});"
+              ],
+              "_lastExecutionId": "92fb1dd7-cdc6-4a02-a36b-4a50e01a38e4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "af92982a-b608-4766-b844-35730b54a1f3",
+        "name": "系统错误_异常提交方式",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "f93a65fa-105b-42db-bb9d-7b165fffb839",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为11\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(11);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"system error\");",
+                "});",
+                ""
+              ],
+              "_lastExecutionId": "8a7a9589-1692-445d-8c4f-2f1d83ccc0c7"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5f7fbca8-09e1-412b-a448-0faa82818e6c",
+        "name": "参数错误_多参数",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              },
+              {
+                "key": "c",
+                "value": "123"
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "703aee7e-5b48-4c22-8483-56b649c2a4b3",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "10b51531-ebf4-4a3a-8c33-c0be9973be96"
+            }
+          }
+        ]
+      },
+      {
+        "id": "858e4842-5698-42e0-8d7c-308a65388b02",
+        "name": "参数错误_缺少参数a",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "c",
+                "value": "123"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "f3e0bb5c-5db8-45cf-ac7e-b954cebe3731",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "0186cbb0-6b5b-4145-8d6c-1bb05bc9f112"
+            }
+          }
+        ]
+      },
+      {
+        "id": "07c69a97-e0b3-426f-b95e-c511a433a5d3",
+        "name": "参数错误_缺少参数b",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "f3e0bb5c-5db8-45cf-ac7e-b954cebe3731",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "c51ac0d4-b2a8-40d7-8223-f156c7e6af78"
+            }
+          }
+        ]
+      },
+      {
+        "id": "a3db700c-f72d-4810-86bd-6a3bbffc1bbd",
+        "name": "参数错误_a的值为空",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": ""
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "d08a5f24-251c-4dcc-8cd4-b2f41d97bdc4",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "6a183fae-0f54-4efb-999b-5f277ac43443"
+            }
+          }
+        ]
+      },
+      {
+        "id": "23b250c6-13b6-4ba9-a03a-e478b3da0716",
+        "name": "参数错误_b的值为\b空",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": ""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "1225a9ad-79f1-46b8-ba42-54feb6566622",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "38b5659c-ca18-4b6a-9227-c8264b6fba51"
+            }
+          }
+        ]
+      },
+      {
+        "id": "d96e4127-0b1f-414a-9d4d-3af2b6e4a5c9",
+        "name": "参数错误_a的值含字母",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01abc"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "b3aae7b7-4a08-4318-bbdd-61339061717f",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "ac09ebd6-5915-4ee6-b798-4dc6e0ffe6db"
+            }
+          }
+        ]
+      },
+      {
+        "id": "c2334b7c-f65a-4218-9421-ad02e5ec730d",
+        "name": "参数错误_a的值含负号",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "-01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "b9ff8496-3227-43bd-9570-c6846cf0af37",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "3ff0265e-ca8b-407a-8920-72b90bafe265"
+            }
+          }
+        ]
+      },
+      {
+        "id": "a8d567cb-eee4-4a22-bed2-93abc191bea3",
+        "name": "参数错误_a的值含小数点",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "0.1"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "08454b26-3fac-4953-8377-6e5971e59f05",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "da01703f-19f2-4397-beb1-2256e439ba29"
+            }
+          }
+        ]
+      },
+      {
+        "id": "7bb48001-bd30-4fee-a797-c224cc83f0aa",
+        "name": "参数错误_b的值没有用双引号括起来",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "Amy"
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "127a0598-0d32-4e49-b80c-910a7c12208c",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "23534da5-e58e-4711-89a0-3c3ec773a0e1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ae46a8eb-fe17-4179-b153-195e80baa180",
+        "name": "参数错误_b的值用的是\b单引号括起来",
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "‘Amy’"
+              }
+            ],
+            "variable": []
+          },
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "66d0a814-a925-4200-a5f8-d3948b4007e6",
+              "type": "text/javascript",
+              "exec": [
+                "pm.test(\"错误码是否为21\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_code).to.eql(21);",
+                "});",
+                "",
+                "pm.test(\"msg是否正确\", function () {",
+                "    var jsonData = pm.response.json();",
+                "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                "});"
+              ],
+              "_lastExecutionId": "21724d4e-b637-433c-b22e-06c41f0be369"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "680a876d-9f6e-4fe2-a9bd-066eafb8df97",
+      "name": "entrytask",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "7bca4ceb-3726-4fbf-8975-fd387dff4b3d",
+    "values": []
+  },
+  "globals": {
+    "id": "81f58f9b-1f6f-4d3a-acf5-5ab7de827caa",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 28,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 6.153846153846154,
+      "started": 1547519710586,
+      "completed": 1547519710938
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 13,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "40cd6f11-f5da-4632-8df7-010cc18daf2a",
+          "httpRequestId": "8915e8c4-304d-4681-bd60-d2f48b1448f4"
+        },
+        "item": {
+          "id": "7124852e-4d27-46e8-bf7e-d70d0d4b048f",
+          "name": "正常访问_所有参数正确",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4e355811-c0cc-4cba-8064-7a44b33b9cd5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(0);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"success\");",
+                  "});",
+                  "",
+                  "pm.test(\"refenence是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.refenence).to.eql(\"No.01 is Amy\");",
+                  "});"
+                ],
+                "_lastExecutionId": "e09cd55d-43a0-4b1a-a4e8-db62d3d7bb78"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "ea66132a-615e-4c20-a8df-a9db17791235",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "66"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              48,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              115,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              34,
+              44,
+              32,
+              34,
+              114,
+              101,
+              102,
+              101,
+              110,
+              101,
+              110,
+              99,
+              101,
+              34,
+              58,
+              32,
+              34,
+              78,
+              111,
+              46,
+              48,
+              49,
+              32,
+              105,
+              115,
+              32,
+              65,
+              109,
+              121,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 39,
+          "responseSize": 66
+        },
+        "id": "7124852e-4d27-46e8-bf7e-d70d0d4b048f",
+        "assertions": [
+          {
+            "assertion": "错误码是否为0",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          },
+          {
+            "assertion": "refenence是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "b6d054d0-4ba5-402a-bc09-9fa4c56626da",
+          "length": 13,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "9ccb078c-aa27-40c5-b92e-b193c37a2028"
+        },
+        "item": {
+          "id": "c26e8f19-f87d-459a-8ead-d176d1ae0411",
+          "name": "正常访问_b的值含特殊字符",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "9999"
+                },
+                {
+                  "key": "b",
+                  "value": "\"0a~!@%23$%25^%26*()_%2B%20-%3D{}[]%5C|:\"%3B'<>,.'\"%2F%3F\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bbb0b77e-a273-4bb1-bbf9-95dd127fc287",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为0\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(0);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"success\");",
+                  "});",
+                  "",
+                  "pm.test(\"refenence是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.refenence).to.eql(\"No.9999 is 0a~!@#$%^&*()_+ -={}[]\\\\|:\\\";'<>,.'\\\"/?\");",
+                  "});"
+                ],
+                "_lastExecutionId": "92fb1dd7-cdc6-4a02-a36b-4a50e01a38e4"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "9999"
+              },
+              {
+                "key": "b",
+                "value": "\"0a~!@%23$%25^%26*()_%2B%20-%3D{}[]%5C|:\"%3B'<>,.'\"%2F%3F\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "b1655661-8a82-4b69-9bd9-cfdacf12040d",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "104"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              48,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              115,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              34,
+              44,
+              32,
+              34,
+              114,
+              101,
+              102,
+              101,
+              110,
+              101,
+              110,
+              99,
+              101,
+              34,
+              58,
+              32,
+              34,
+              78,
+              111,
+              46,
+              57,
+              57,
+              57,
+              57,
+              32,
+              105,
+              115,
+              32,
+              48,
+              97,
+              126,
+              33,
+              64,
+              35,
+              36,
+              37,
+              94,
+              38,
+              42,
+              40,
+              41,
+              95,
+              43,
+              32,
+              45,
+              61,
+              123,
+              125,
+              91,
+              93,
+              92,
+              92,
+              124,
+              58,
+              92,
+              34,
+              59,
+              39,
+              60,
+              62,
+              44,
+              46,
+              39,
+              92,
+              34,
+              47,
+              63,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 5,
+          "responseSize": 104
+        },
+        "id": "c26e8f19-f87d-459a-8ead-d176d1ae0411",
+        "assertions": [
+          {
+            "assertion": "错误码是否为0",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          },
+          {
+            "assertion": "refenence是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "44e7df92-145e-4cb1-9491-5095d18b662e",
+          "length": 13,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "e1b99797-d96c-4538-8962-1070329dd4dc"
+        },
+        "item": {
+          "id": "af92982a-b608-4766-b844-35730b54a1f3",
+          "name": "系统错误_异常提交方式",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f93a65fa-105b-42db-bb9d-7b165fffb839",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为11\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(11);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"system error\");",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "8a7a9589-1692-445d-8c4f-2f1d83ccc0c7"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            },
+            {
+              "key": "content-length",
+              "value": ""
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "5c2e8225-42c9-41f3-a29f-fe00d53f3acf",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "43"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              49,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              115,
+              121,
+              115,
+              116,
+              101,
+              109,
+              32,
+              101,
+              114,
+              114,
+              111,
+              114,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 4,
+          "responseSize": 43
+        },
+        "id": "af92982a-b608-4766-b844-35730b54a1f3",
+        "assertions": [
+          {
+            "assertion": "错误码是否为11",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "dcddf739-3ecd-498b-84ae-0f83e885a36b",
+          "length": 13,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "97fd4b61-496b-4b82-82ff-24f6384b7690"
+        },
+        "item": {
+          "id": "5f7fbca8-09e1-412b-a448-0faa82818e6c",
+          "name": "参数错误_多参数",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                },
+                {
+                  "key": "c",
+                  "value": "123"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "703aee7e-5b48-4c22-8483-56b649c2a4b3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "10b51531-ebf4-4a3a-8c33-c0be9973be96"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              },
+              {
+                "key": "c",
+                "value": "123"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "30c1c857-ee94-4c59-912c-e9a9b74f0328",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 4,
+          "responseSize": 52
+        },
+        "id": "5f7fbca8-09e1-412b-a448-0faa82818e6c",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "0c97ed16-27c2-40a1-8c1c-cbddac539eee",
+          "length": 13,
+          "cycles": 1,
+          "position": 4,
+          "iteration": 0,
+          "httpRequestId": "917e7624-60d5-4b7a-bce6-f995ba62b544"
+        },
+        "item": {
+          "id": "858e4842-5698-42e0-8d7c-308a65388b02",
+          "name": "参数错误_缺少参数a",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "123"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f3e0bb5c-5db8-45cf-ac7e-b954cebe3731",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "0186cbb0-6b5b-4145-8d6c-1bb05bc9f112"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "c",
+                "value": "123"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "d8b2d588-0095-41c3-9b2f-43c03d2e3233",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 3,
+          "responseSize": 52
+        },
+        "id": "858e4842-5698-42e0-8d7c-308a65388b02",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "178a1230-b85d-4670-9a18-78e298c75d2d",
+          "length": 13,
+          "cycles": 1,
+          "position": 5,
+          "iteration": 0,
+          "httpRequestId": "8c66e916-4dea-418f-b09c-90338cc36260"
+        },
+        "item": {
+          "id": "07c69a97-e0b3-426f-b95e-c511a433a5d3",
+          "name": "参数错误_缺少参数b",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f3e0bb5c-5db8-45cf-ac7e-b954cebe3731",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "c51ac0d4-b2a8-40d7-8223-f156c7e6af78"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "c4185844-ad0a-4093-b7b2-952dd250f1a0",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 3,
+          "responseSize": 52
+        },
+        "id": "07c69a97-e0b3-426f-b95e-c511a433a5d3",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "8637362e-25b7-4d81-9fc1-523e10693b57",
+          "length": 13,
+          "cycles": 1,
+          "position": 6,
+          "iteration": 0,
+          "httpRequestId": "7d318eb0-2e8b-42dd-80cb-c548cf0aef85"
+        },
+        "item": {
+          "id": "a3db700c-f72d-4810-86bd-6a3bbffc1bbd",
+          "name": "参数错误_a的值为空",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": ""
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d08a5f24-251c-4dcc-8cd4-b2f41d97bdc4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "6a183fae-0f54-4efb-999b-5f277ac43443"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": ""
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "a73e1804-e8f4-46aa-8a49-77feeb0f259a",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 3,
+          "responseSize": 52
+        },
+        "id": "a3db700c-f72d-4810-86bd-6a3bbffc1bbd",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "31d0c8e6-a5a7-48d3-9f9c-0b5b872b36a0",
+          "length": 13,
+          "cycles": 1,
+          "position": 7,
+          "iteration": 0,
+          "httpRequestId": "2e433232-b373-4343-bd8b-d0ceb4aa6dc2"
+        },
+        "item": {
+          "id": "23b250c6-13b6-4ba9-a03a-e478b3da0716",
+          "name": "参数错误_b的值为\b空",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                },
+                {
+                  "key": "b",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1225a9ad-79f1-46b8-ba42-54feb6566622",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "38b5659c-ca18-4b6a-9227-c8264b6fba51"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": ""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "d458f20c-fcc7-45b0-bcb6-8bc3ba633639",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 4,
+          "responseSize": 52
+        },
+        "id": "23b250c6-13b6-4ba9-a03a-e478b3da0716",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "a67db6d4-e3ea-4dd2-adbe-7fc67fb1e680",
+          "length": 13,
+          "cycles": 1,
+          "position": 8,
+          "iteration": 0,
+          "httpRequestId": "ad3ca6d9-37dc-4299-8340-49a5796131f4"
+        },
+        "item": {
+          "id": "d96e4127-0b1f-414a-9d4d-3af2b6e4a5c9",
+          "name": "参数错误_a的值含字母",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01abc"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b3aae7b7-4a08-4318-bbdd-61339061717f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "ac09ebd6-5915-4ee6-b798-4dc6e0ffe6db"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01abc"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "c3d3f5cb-2cb2-4da1-a502-911ce1fffc4f",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 3,
+          "responseSize": 52
+        },
+        "id": "d96e4127-0b1f-414a-9d4d-3af2b6e4a5c9",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "9d2f010c-4c48-4077-b652-1decc23cfa9a",
+          "length": 13,
+          "cycles": 1,
+          "position": 9,
+          "iteration": 0,
+          "httpRequestId": "b02e2fb0-041d-4363-a62e-23466ebc6498"
+        },
+        "item": {
+          "id": "c2334b7c-f65a-4218-9421-ad02e5ec730d",
+          "name": "参数错误_a的值含负号",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "-01"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b9ff8496-3227-43bd-9570-c6846cf0af37",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "3ff0265e-ca8b-407a-8920-72b90bafe265"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "-01"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "9bec1dd5-de58-452b-b6da-129e1d48e1af",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 3,
+          "responseSize": 52
+        },
+        "id": "c2334b7c-f65a-4218-9421-ad02e5ec730d",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "208a61a3-a029-4336-8d06-86e046fa5e24",
+          "length": 13,
+          "cycles": 1,
+          "position": 10,
+          "iteration": 0,
+          "httpRequestId": "b7206f2d-0f7c-4293-83bd-e0ef23a93768"
+        },
+        "item": {
+          "id": "a8d567cb-eee4-4a22-bed2-93abc191bea3",
+          "name": "参数错误_a的值含小数点",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "0.1"
+                },
+                {
+                  "key": "b",
+                  "value": "\"Amy\""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "08454b26-3fac-4953-8377-6e5971e59f05",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "da01703f-19f2-4397-beb1-2256e439ba29"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "0.1"
+              },
+              {
+                "key": "b",
+                "value": "\"Amy\""
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "47853e9b-c280-4c4f-9141-7a999e037581",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 2,
+          "responseSize": 52
+        },
+        "id": "a8d567cb-eee4-4a22-bed2-93abc191bea3",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "7e4988f6-ae7d-47fc-9a33-d45af6e1a22b",
+          "length": 13,
+          "cycles": 1,
+          "position": 11,
+          "iteration": 0,
+          "httpRequestId": "358eaa9a-7628-4893-aae1-9ec72a836937"
+        },
+        "item": {
+          "id": "7bb48001-bd30-4fee-a797-c224cc83f0aa",
+          "name": "参数错误_b的值没有用双引号括起来",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                },
+                {
+                  "key": "b",
+                  "value": "Amy"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "127a0598-0d32-4e49-b80c-910a7c12208c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "23534da5-e58e-4711-89a0-3c3ec773a0e1"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "Amy"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "ed14787d-ab8b-4821-8b40-a894375bd950",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 3,
+          "responseSize": 52
+        },
+        "id": "7bb48001-bd30-4fee-a797-c224cc83f0aa",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "c894859a-9e75-44dd-8fcd-e3843fe1e32d",
+          "length": 13,
+          "cycles": 1,
+          "position": 12,
+          "iteration": 0,
+          "httpRequestId": "30bd1193-1b02-4bf3-8d24-789deecafe30"
+        },
+        "item": {
+          "id": "ae46a8eb-fe17-4179-b153-195e80baa180",
+          "name": "参数错误_b的值用的是\b单引号括起来",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "port": "8080",
+              "path": [
+                ""
+              ],
+              "host": [
+                "localhost"
+              ],
+              "query": [
+                {
+                  "key": "a",
+                  "value": "01"
+                },
+                {
+                  "key": "b",
+                  "value": "‘Amy’"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "66d0a814-a925-4200-a5f8-d3948b4007e6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"错误码是否为21\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_code).to.eql(21);",
+                  "});",
+                  "",
+                  "pm.test(\"msg是否正确\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.err_msg).to.eql(\"empry or wrong params\");",
+                  "});"
+                ],
+                "_lastExecutionId": "21724d4e-b637-433c-b22e-06c41f0be369"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "http",
+            "port": "8080",
+            "path": [
+              ""
+            ],
+            "host": [
+              "localhost"
+            ],
+            "query": [
+              {
+                "key": "a",
+                "value": "01"
+              },
+              {
+                "key": "b",
+                "value": "‘Amy’"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.6.0"
+            },
+            {
+              "key": "Accept",
+              "value": "*/*"
+            },
+            {
+              "key": "Host",
+              "value": "localhost:8080"
+            },
+            {
+              "key": "accept-encoding",
+              "value": "gzip, deflate"
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": ""
+          }
+        },
+        "response": {
+          "id": "b398c35e-5d98-4d86-a550-2834ab265258",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 15 Jan 2019 02:35:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.7.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html"
+            },
+            {
+              "key": "Content-Length",
+              "value": "52"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              95,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              32,
+              50,
+              49,
+              44,
+              32,
+              34,
+              101,
+              114,
+              114,
+              95,
+              109,
+              115,
+              103,
+              34,
+              58,
+              32,
+              34,
+              101,
+              109,
+              112,
+              114,
+              121,
+              32,
+              111,
+              114,
+              32,
+              119,
+              114,
+              111,
+              110,
+              103,
+              32,
+              112,
+              97,
+              114,
+              97,
+              109,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 4,
+          "responseSize": 52
+        },
+        "id": "ae46a8eb-fe17-4179-b153-195e80baa180",
+        "assertions": [
+          {
+            "assertion": "错误码是否为21",
+            "skipped": false
+          },
+          {
+            "assertion": "msg是否正确",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 733
+    },
+    "failures": [],
+    "error": null
+  }
+}
